@@ -1,0 +1,9 @@
+{
+  "query": "DROP TABLE IF EXISTS conversions; DROP TABLE IF EXISTS formattingRules;",
+  "command": "mysql --batch --raw --column-names --default-character-set=utf8mb4 --host gateway02.us-east-1.prod.aws.tidbcloud.com --port 4000 --user 48kMZLMAvU8YYpU.32fff804f769 --database NoExsoq7bZykxEFZEeg3Y6 --execute DROP TABLE IF EXISTS conversions; DROP TABLE IF EXISTS formattingRules;",
+  "rows": [],
+  "messages": [],
+  "stdout": "",
+  "stderr": "",
+  "execution_time_ms": 751
+}

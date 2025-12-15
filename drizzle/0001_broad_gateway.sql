@@ -1,0 +1,42 @@
+CREATE TABLE `conversions` (
+`id` int AUTO_INCREMENT NOT NULL,
+`userId` int NOT NULL,
+`formattingRuleId` int,
+`markdownTitle` varchar(255),
+`markdownSize` int NOT NULL,
+`pdfUrl` text,
+`pdfSize` int,
+`generationTimeMs` int,
+`status` enum('pending','completed','failed') NOT NULL DEFAULT 'pending',
+`errorMessage` text,
+`createdAt` timestamp NOT NULL DEFAULT (now()),
+`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+CONSTRAINT `conversions_id` PRIMARY KEY(`id`)
+);
+--> statement-breakpoint
+CREATE TABLE `formattingRules` (
+`id` int AUTO_INCREMENT NOT NULL,
+`userId` int NOT NULL,
+`name` varchar(255) NOT NULL,
+`description` text,
+`fontFamily` varchar(100) NOT NULL DEFAULT 'Inter',
+`fontSize` int NOT NULL DEFAULT 12,
+`lineHeight` decimal(3,2) NOT NULL DEFAULT '1.50',
+`headingStyles` json NOT NULL,
+`pageSize` varchar(20) NOT NULL DEFAULT 'A4',
+`marginTop` int NOT NULL DEFAULT 20,
+`marginBottom` int NOT NULL DEFAULT 20,
+`marginLeft` int NOT NULL DEFAULT 20,
+`marginRight` int NOT NULL DEFAULT 20,
+`headerText` text,
+`footerText` text,
+`codeBlockStyles` json NOT NULL,
+`tableStyles` json NOT NULL,
+`pageBreakBeforeHeadings` varchar(20) NOT NULL DEFAULT 'h1',
+`preventOrphanHeadings` int NOT NULL DEFAULT 1,
+`keepCodeBlocksTogether` int NOT NULL DEFAULT 1,
+`isPreset` int NOT NULL DEFAULT 0,
+`createdAt` timestamp NOT NULL DEFAULT (now()),
+`updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+CONSTRAINT `formattingRules_id` PRIMARY KEY(`id`)
+);
