@@ -163,19 +163,11 @@ export default function Converter() {
               <TabsContent value="preview" className="mt-4">
                 {pdfUrl ? (
                   <Card className="overflow-hidden bg-white h-[600px]">
-                    <div className="w-full h-full flex items-center justify-center p-4">
-                      <div className="text-center">
-                        <Eye className="w-12 h-12 mx-auto text-muted-foreground mb-4" />
-                        <p className="text-muted-foreground mb-4">PDF Preview (HTML representation)</p>
-                        <p className="text-xs text-muted-foreground mb-4">
-                          This shows the HTML structure that will be converted to PDF
-                        </p>
-                        <Button onClick={handleDownloadPDF} variant="default">
-                          <Download className="w-4 h-4 mr-2" />
-                          Download PDF
-                        </Button>
-                      </div>
-                    </div>
+                    <iframe
+                      src={pdfUrl}
+                      className="w-full h-full border-0"
+                      title="PDF Preview"
+                    />
                   </Card>
                 ) : (
                   <Card className="p-8 text-center h-[600px] flex items-center justify-center">
